@@ -48,6 +48,49 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+// Esperar a que el DOM esté completamente cargado
+document.addEventListener('DOMContentLoaded', () => {
+
+    // Manejo del formulario de registro
+    const registerForm = document.getElementById('registerForm');
+    if (registerForm) { // Verificar que el formulario exista en la página
+        registerForm.addEventListener('submit', function(event) {
+            event.preventDefault(); // Evita la recarga automática del formulario
+
+            // Obtener valores de los campos de usuario y contraseña
+            const username = document.getElementById('reg-username').value.trim();
+            const password = document.getElementById('reg-password').value.trim();
+
+            // Validar que los campos no estén vacíos
+            if (validateInputs(username, password)) {
+                // Redirigir a register2.html tras el registro exitoso
+                window.location.href = 'register2.html';
+            }
+        });
+    }
+
+    // Validación simple de los campos
+    function validateInputs(username, password) {
+        if (username === '') {
+            alert('Por favor, ingresa un nombre de usuario.');
+            return false;
+        }
+        if (password === '') {
+            alert('Por favor, ingresa una contraseña.');
+            return false;
+        }
+        return true; // Si ambos campos están completos
+    }
+
+    // Manejo del botón "Volver al Inicio" en register2.html
+    const goToLoginBtn = document.getElementById('goToLoginBtn');
+    if (goToLoginBtn) { // Verificar que el botón exista en la página
+        goToLoginBtn.addEventListener('click', function() {
+            window.location.href = 'index.html'; // Redirigir al login (index.html)
+        });
+    }
+});
+
 
 
 
